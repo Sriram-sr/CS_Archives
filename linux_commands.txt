@@ -1,0 +1,75 @@
+Commands
+
+Extract Commands:  
+
+tar -tvf <tar_file> => To view the contents of tar file
+tar -xvf <tar_archive> => To extract all content
+
+sed -n '<start>,<end>p' file_name => To view the specific(start to end) lines.
+
+sed -i 's/old-text/new-text/g' input.txt => To replace using sed
+
+df -h path => Will give you used space in that path
+
+df -Ph . | awk 'NR==2 {print $4}' => Will give available space in current directory
+
+open . => To open the current folder in files
+
+lsb_release -a => To know about distribution information (lsb stands for linux standard base)
+press ctrl+r to search commands you have already key in
+
+$ echo $? => To find if the last command is executed successfully (correct if returns 0)
+
+$ ip route => To find the default gateway
+$ file <filename> => To know the type of the file
+$ cd /var/log => There you find the syslog file to get the log of all system activities
+
+$ nproc => To list the processors in your pc
+
+$ uname -m => To find the architecture of your system(bit)
+
+VI command
+  <ctrl+d> => To scroll down page
+  <ctrl+f> => Page forward
+  <ctrl+b> => page backward
+  <ctrl+u> => To scroll page up
+
+  To search a word , esc mode /<word> 
+
+$ PS1='<text_toshow_in_prompt>' => To change the prompt text
+
+cd /etc -> open hostname file to edit hostname and reboot
+
+$ dmesg => To get the log of system start up 
+
+PUBLIC KEY 
+$ To add Public key of websites => $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FCEF32E745F2C3D5
+$ gpg --keyserver keyserver.ubuntu.com --search-keys jeyendran785@gmail.com => To search for someone's public key using gmail id , will give their pb key
+     add that key using previous command
+    
+Tr command :
+
+$ cat <file_name> | tr <'txt1'> <'TXT2'> => To replace all characters in txt 1 like 't' 'x' 't' to 'T' 'X' 'T'
+
+$ cat <file_name> | tr -d <txt> => To remove characters not replace
+
+$ echo -n <word_tobe_encoded> | base64 => To encode a word(secure data) into base64 format to sent across networks
+  (eg. $ echo -n "password" | base64)
+
+$ echo <encoded_txt> | base64 -d => To decode a base64 encoded text
+
+nmap -Pn <ipaddress> => to find active running services of remote machine
+pgrep <processName> => will return the process id (eg. $pgrep ssh)
+ss => this command will give the socket statistics for local sock address and remote socket address of active running processes
+mpstat => To see cpu performance
+lsof -i :<portnumber> => To find process id of a specific port
+kill -9 <pID> => To kill the process recursively
+
+LISTEN FOR ACTIVE PORTS:
+
+Run any one of the following command on Linux to see open ports:
+sudo lsof -i -P -n | grep LISTEN
+sudo netstat -tulpn | grep LISTEN
+sudo ss -tulpn | grep LISTEN
+sudo lsof -i:22 ## see a specific port such as 22 ##
+sudo nmap -sTU -O IP-address-Here

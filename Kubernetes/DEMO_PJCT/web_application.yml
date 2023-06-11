@@ -1,0 +1,23 @@
+apiVersion : apps/v1
+kind : Deployment
+metadata :
+  name : mywebapp # same name will be used for podname
+  labels :
+    app : webapp-sql
+    tier : frontend
+spec :
+  replicas : 1
+  selector :
+    matchLabels :
+      app : webapp-sql
+  template :
+    metadata : 
+      labels :
+        app : webapp-sql
+        tier : frontend
+    spec :
+      containers :
+      - name : webapp-container  # This is name given for container
+        image : hshar/webapp
+        ports :
+        - containerPort : 8081

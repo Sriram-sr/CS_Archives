@@ -1,0 +1,63 @@
+https://github.com/k88hudson/git-flight-rules [ Git FAQs ]
+
+
+To configure Git 
+
+$git config --global user.name "Sriram"
+$git config --global user.email "srirampanneer90@gmail.com"
+$git config --list
+$nano ~/.gitconfig
+
+working directory -> Your current workspace where you have cloned or remote added repository
+staging area -> where files gets stored in virtual area when you add file
+local repository -> Files stored after your commit waiting to push to remote
+
+If you want to commit new changes to the same previous commit, after made changes add files and give,
+$git commit --amend
+After that you need to push the code forcefully,
+$git push -f origin <branch_name>
+
+1. Add files that need to be added to be the folder where a git repository is added
+2. $git init - To add a empty repository
+3. $git remote add origin https://github.com/Sriram-sr/Bank_Server.git  (This command is entered only once for each repo)
+4. $git clone https://github.com/Sriram-sr/Bank_Server.git
+28. $git clone --single-branch --branch <branch-name> <url> -> To clone a specific repository
+4. $git clone -b <branch_name> <remote_repo_link> =>To clone a specific repository
+5. $git add -A (or) git add -a (or) git add . => To add all files
+6. $git commit -m 'first'
+6. $git ls-files => To list files in staging area
+7. $git push origin main
+8. $git pull origin main - To get files
+9. $git branch <branch_name> => To create new branch of given name
+9. $git checkout -b <branchname> -To create a new branch and switch to ita
+9. $git merge <branch_name> => To merge from the branch you specify to the current branch 
+10. $git add <filename> - To add the file to the new branch
+11. $git commit -m <msg> - To commit file to new branch
+12. $git push origin <new branch name> - To push file to new branch
+13. $git checkout <branchname> - To switch to new branch
+14. $git branch - To show all branches
+15. $git branch --delete <branch name> => To delete branch
+15. $git status - To find your current branch
+15.$reset --soft HEAD~ => To get files to staging area back to a wrong commit
+16. $git reset => To return the files to local repo from staging area
+17. $ git restore <file_name> => To restore changes in working directory after changed (Generally gets back the deleted file)
+17. $git stash => To delete the local edited changes
+18. $ git commit -a -m <any_message> => To add and commit.This can be done only for already tracked files
+c19. $ git diff <file_name> => To get the differece between added  staged area file being changed in working dir before commit
+20. $ git diff HEAD <file_name> => To get diff file in local repo and file in working dir
+21. $ git restore --staged <file_name> => To restore file from staging to wrking dirctry which is newly Added
+22. $ git checkout -- <file_name> => To remove contents of file edited in wrking directory which is already added file.This will erase the newly edited data from wrking directory 
+23. $ git log => To get log about commits
+24. $git log --oneline => To get log in only single line
+
+25. $git log --graph => TO see the merge graph of commits
+26. $git log --oneline --graph => shorthand of the above
+27. $ git pull --rebase origin <your_branch> => To exclude merge conflicts
+
+GIT COMMON ERRORS
+
+This error comes while pushing into some branch
+error: failed to push some refs to 'https://wwwin-github.cisco.com/cafy/cafykit.git'
+(This is due to you might have some commits in the same branch which you do not have in your local git repo)
+$ git pull --rebase origin <your_branch>
+After that push the code.

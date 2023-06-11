@@ -1,0 +1,40 @@
+$ minikube status => To get the status of node ,api server whether running
+
+$ kubectl run <pod_name> --image=<image_name> => will create a pod by pulling image and running a container inside a pod
+
+$ kubectl get nodes => To get the nodes configured with it
+
+$ kubectl create deployment <Name_of_cointainer> --image=<image_name> => will create a pod which is abstraction by deployement give the docker image to create
+
+$ kubectl get deployment => To see all deployments (or)  $ kubectl get deploy
+
+$ kubectl get pod => Will return the pods with the status of running containers (or) $ kubectl get pods
+
+$ kubectl exec -it <pod_name> => To enter into terminal of deployed container
+
+$ kubectl get replicaset
+
+  A pod is the abstraction of containers
+
+$ kubectl describe pod <pod_name> => To see detailed description 
+
+$ kubectl logs <pod_name> => To get logs
+
+To deploy pods using configuration file (Yaml file) 
+
+$ kubectl apply -f <file_name> => To apply configuration on yaml file -f stands for f
+
+$ kubectl delete deployment -f <file_name> => To delete deployment created using configuration file 
+
+$ kubectl delete deployment <deployment_name> => To delete deployment
+
+$ kubectl edit deploy <deployment_name> => To edit the configuration yaml directly in the cluster
+
+$ kubectl get deployment <deployment_name> -o yaml => To get output of description of deployment in yaml format (status automatically generated) -o stands for output
+   -also can save output in a file -> $ <above_cmd> > file_name
+
+$ kubectl delete pod <pod_name> => To delete pod
+
+$ kubectl get pods -o wide  => This will return additional information about pods like Ip address
+
+$ kubectl get svc => To get running services

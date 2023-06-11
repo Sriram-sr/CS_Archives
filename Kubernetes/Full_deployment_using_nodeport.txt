@@ -1,0 +1,19 @@
+create a pod configuration file creating pod for nginx 
+
+login to nginx pod using $ kubectl exec -it <pod_name> /bin/bash
+
+go to location /usr/share/nginx/html and create a html file 
+
+the html file text is saved in pwd as html_page.html file
+
+create a file as test.html and paste html code
+
+exit from pod
+
+use command to expose port $ kubectl expose pod <pod_name> --type=NodePort --port=<port_to_be_exposed> 
+   ($ kubectl expose pod nginx-pod --type=NodePort --port=80)
+
+get port exposed by $ kubectl describe svc <pod_name>
+get the node ip by $ minikube ip 
+access socket address with the above
+

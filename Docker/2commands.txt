@@ -1,0 +1,33 @@
+To create a customised image from the container :
+Login into container and after changes made logout (ctrl+d)
+
+$ docker commit <container_id> <new_image_name>:<tag> => will create a new customised image (eg. docker commit b235sgw67hsf2 new_image:2.1)
+
+After creating a docker file to build docker image,
+ $ docker build <imagename>:<tag> . => (.) stands for docker file (It should be in pwd or You should specify path)
+
+$ docker network ls => To list the docker networks
+
+$ docker nework create <network_name> => To create a new network
+
+$ docker network inspect <network_name> => To inspect driver and ip range subnet details of network
+
+$ docker inspect <container_name> => To inspect container about ip address assigned and more
+
+$ docker info => To get the complete information about docker installed in your system
+
+$ docker run <image_name> -P => To forward port dynamically instead of forwarding manually to access from outside network
+
+Docker_Volumes 
+
+/var/lib/docker => Place where docker volumes are stored
+
+$ docker create volume <volume_name> => To create a volume 
+
+$ docker run --mount source=<source_dest>,destination=<folder you want to be created inside container> <image_name> => This will\
+   mount the local volume created into container with name you specified
+    (eg. $ docker run -d --mount source=my_volume,destination=/data ubuntu:latest)
+
+$ docker volume inspect <volume_name> => To inspect volume about location and many
+
+$ docker volume prune => To delete all volumes that are not used by any containers

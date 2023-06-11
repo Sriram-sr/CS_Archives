@@ -1,0 +1,24 @@
+$ kubectl port-forward service/<service_name> <containerPort>:<service_port> => To forward container port eg.($ kubectl port-forward service/demo 8888:9999)
+  Only after you run this command you can access with localhost:8888(whcih is containerIP)
+
+$ kubectl get pods -l <anylabelkey> =<value> => To filter pods using label (-l stands for label) (eg. $ kubectl get pods -l env=localenv)
+
+$ kubectl get deploy -l <key> = <value> => To filter deployments using label
+
+$ minikube profile list => To describe all details about minikube profile
+
+To install minikube cluster named double docker with additional nodes 
+
+$ minikube start --nodes=2 --kubernetes-version=v1.23.1 --driver=docker --profile doubledocker
+
+To delete this minikube profile
+
+$ minikube delete -p doubledocker 
+
+$ minikube addons list => To list the addons that minikube does support like dashboard,storage class
+
+$ kubectl get all => To display all created kubernetes object
+
+$ kubectl get events
+
+pod (po), service (svc), replicationcontroller (rc), deployment (deploy), replicaset (rs)

@@ -1,0 +1,5 @@
+echo "The filename is $0"
+echo "The first command line argument is $1"
+echo "The quoted values is $@"
+echo "The last command status code is $?"
+echo "The number of arguments in execution is  $#"

@@ -1,0 +1,51 @@
+{% extends "base/base.html" %}
+{% block content %}
+  <main class="profile-page layout layout--3">
+    <div class="container">
+      <!-- Topics Start -->
+      {% include "base/topics_component.html" %}
+      <!-- Topics End -->
+
+      <!-- Room List Start -->
+      <div class="roomList">
+        <div class="profile">
+          <div class="profile__avatar">
+            <div class="avatar avatar--large active">
+              <img src="{{ profile.avatar.url }}" />
+            </div>
+          </div>
+          <div class="profile__info">
+            <h3>{{user.username|title}}</h3>
+            <p>@{{user.username}}</p>
+            {% if request.user == user %}
+            <a href="{% url 'update-profile' %}" class="btn btn--main btn--pill">Edit Profile</a>
+            {% endif %}
+          </div>
+          <div class="profile__about">
+            <h3>About</h3>
+            {{user.profile_set.all}}
+            <p>
+              Words have the power to motivate us and help us to live more intentionally. Each of us<br>
+              have areas of our lives that we would like to improve, and there are quotes and words<br>
+              of wisdom that can almost always be found to motivate and inspire us in these different areas
+            </p>
+          </div>
+        </div>
+
+        <div class="roomList__header">
+          <div>
+            <h2>Study Rooms Hosted by {{user.username}}</a>
+            </h2>
+          </div>
+        </div>
+        {% include "base/feed_component.html" %}
+      </div>
+      <!-- Room List End -->
+
+      <!-- Activities Start -->
+     {% include "base/activity_component.html" %}
+      <!-- Activities End -->
+    </div>
+  </main>
+
+{% endblock %}

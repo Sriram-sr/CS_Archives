@@ -1,0 +1,121 @@
+{
+    "Users": [
+        {
+            "id": 1,
+            "username": "Sriram",
+            "is_admin": false,
+            "is_staff": false,
+            "created_at": "2023-02-02 18:31:43.014603"
+        },
+        {
+            "id": 2,
+            "username": "danerys targaryan",
+            "is_admin": false,
+            "is_staff": true,
+            "created_at": "2023-02-12 13:15:55.120751"
+        },
+        {
+            "id": 3,
+            "username": "vijay kumar",
+            "is_admin": false,
+            "is_staff": false,
+            "created_at": "2023-02-12 21:07:22.670200"
+        }
+    ],
+    "Students": [
+        {
+            "id": 1,
+            "fullname": "Sriram",
+            "first_name": "Sri",
+            "last_name": "Sr",
+            "mobile_number": 8428259394,
+            "gender": "male",
+            "email": "sriramsr@gmail.com",
+            "enrollment_date": "02-02-2023"
+        },
+        {
+            "id": 2,
+            "fullname": "VijayKumar",
+            "first_name": "vijay",
+            "last_name": "kumar",
+            "mobile_number": "932632891",
+            "gender": "male",
+            "email": "vijay@gmail.com",
+            "enrollment_date": "2023-02-12"
+        },
+        {
+            "id": 3,
+            "fullname": "hanish ",
+            "first_name": "hani",
+            "last_name": "sha",
+            "mobile_number": "9182186311",
+            "gender": "male",
+            "email": "hanimani@gmail.com",
+            "enrollment_date": "2023-04-22"
+        }
+    ],
+    "Courses": [
+        {
+            "id": 1,
+            "course_name": "React-Js Crash Course",
+            "start_date": "02-02-2023",
+            "end_date": "05-02-2023",
+            "description": "This will Teach all React Core concepts and advanced concepts like Redux with React"
+        },
+        {
+            "id": 2,
+            "course_name": "CSS starter Course",
+            "start_date": "12-02-2023",
+            "end_date": "24-02-2023",
+            "description": "This course will teach you css from Scratch you don't need any pre-requisite knowledg on CSS, Just some basic Html knowledge is enough"
+        },
+        {
+            "id": 3,
+            "course_name": "Python for Everyone",
+            "start_date": "02-02-2023",
+            "end_date": "24-02-2023",
+            "description": "You can learn Python from Scratch to exciting projets in this course"
+        }
+    ],
+    "Enrollment": [
+        {
+            "enrollment_id": 1,
+            "student_id": "2017502044",
+            "course_id": "BJLK234"
+        }
+    ],
+    "Teachers": [
+        {
+            "id": 2,
+            "first_name": "Sugandha",
+            "last_name": "Mittal",
+            "email": "sugmitta@cisco.com",
+            "mobile_number": "928331131",
+            "teacher_status": "active"
+        },
+        {
+            "id": 3,
+            "first_name": "queen",
+            "last_name": "cersei",
+            "email": "queenregent@gmail.com",
+            "mobile_number": "981316381",
+            "teacher_status": "active"
+        },
+        {
+            "id": 4,
+            "first_name": "danerys",
+            "last_name": "targaryan",
+            "email": "deneryskhaleesi@gmail.com",
+            "mobile_number": "9318381113",
+            "teacher_status": "active"
+        }
+    ],
+    "Credentials": [
+        {
+            "admin": {
+                "username": "admin",
+                "password": "admin"
+            }
+        }
+    ]
+}

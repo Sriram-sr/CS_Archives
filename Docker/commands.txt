@@ -1,0 +1,48 @@
+$docker ps  ==> To find active running containers
+
+$docker ps -a ==> To list all containers which are running or not running
+
+$docker image ls ==> To list all images   (or)  $docker images
+
+----------------------------
+
+To get the ubuntu image 
+
+$docker image pull ubuntu:latest ==> To get the ubuntu image (It wil get the image from Docker Hub)
+$docker run -it <imageid> /bin/bash ==> To get  terminal of the os image downloaded  -it stands for interactive terminal /bash for bash shell
+$docker exec -it <container_id (or) container_name> /bin/bash ==> To get interactive terminal using container name or id
+
+----------------------------
+
+$docker start <container_id> ==> To start container
+$docker stop <container_id> ==> To stop   (or) $docker stop <container_name> 
+
+-----------------------------
+
+To set specific host port for different versions of a same application containers
+   This is forwarding the container port to the host port to access using the ip address of your current network connectivity
+$docker run -p<port>:<previous port of container> -d <image with version> ==> dockler run -p6000:6379 -d redis:latest
+    (-p stands for port forwarding)
+----------------------------
+
+$docker logs <container_id> ==> To get log using container id
+
+$docker logs <container_name> ==> Using name
+
+$docker run --name <Name> <image_name> ==> To set  name for your container
+
+$docker system df ==> To find images's disk usage
+
+$ docker search <image-name> => To search for a image
+
+$ docker system df => To find system storage usage of docker images
+
+$ docker rm <container name> => To delete the container (You cannot delete running container)
+
+$ docker inspect <imageName or imageId> => To inspect the details about docker image like ports
+
+$ docker save <image_name> > <filename> => To get a backup of the image in tar file (eg. docker save ubuntu > bkp_file.tar)
+
+$ docker images -aq => To get only image id's
+
+$ docker run -i <image_name> => To get the log of what happening in container

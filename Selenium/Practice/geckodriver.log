@@ -1,0 +1,12 @@
+1649980893053	geckodriver	INFO	Listening on 127.0.0.1:46935
+1649980893136	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-no-remote" "-profile" "/tmp/rust_mozprofileyumhfi"
+1649980894142	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileyumhfi/search.json.mozlz4", (void 0)))
+1649980899462	Marionette	INFO	Listening on port 35855
+1649980899582	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.livechatinc.com/tracking.js, line 1: NS_ERROR_NOT_INITIALIZED: 
+1649980920243	Marionette	INFO	Stopped listening on port 35855
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+

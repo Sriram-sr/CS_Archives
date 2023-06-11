@@ -1,0 +1,27 @@
+# This is a deployment yaml used to create deployment for the pod file 'sample_pod_file.yaml' 
+apiVersion : apps/v1
+kind : Deployment
+metadata : 
+  name : nginx2-deploy
+  labels :
+    app : nginx
+spec :
+  replicas : 1
+  selector : 
+    matchLabels :
+      env : localenv 
+      # Here you can mention any matching label specified in pod file     
+  template :
+  # For the template you can copy the whole pod file from metadata and don't have to change anything
+    metadata : 
+      name : nginx-pod
+      labels :
+        env : localenv
+        identifier : nginx-local-pod
+        type : pod-create
+    spec :
+      containers :
+      - name : nginx-container
+        image : nginx
+        ports : 
+          - containerPort : 80      
