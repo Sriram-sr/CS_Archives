@@ -7,8 +7,8 @@ Extract Zip file Commands:
 
 tar -tvf <tar_file> => To view the contents of tar file
 tar -xvf <tar_archive> => To extract all content
-
-sed -n '<start>,<end>p' file_name => To view the specific(start to end) lines.
+sed -i 'nd' <file name> => To delete particular line[n here is line number]
+sed -n '<start>,<end>p' <file name> => To view the specific(start to end) lines.
 
 sed -i 's/old-text/new-text/g' input.txt => To replace using sed
 
