@@ -1,0 +1,166 @@
+Java Tips
+
+Double dub_variable = 234d;
+you can use hashCode method for double data type to generate hashcode for this variable.
+
+final keyword to make the variable not to be overritten
+
+declaration array list,
+import java.util.ArrayList;
+ArrayList array = new ArrayList();
+array.add(2); will add 2 to list
+array.indexOf(2); will return indexOf
+
+ShorthandIf statement
+(exprssion) ? <action> : <action>
+? => if 
+: => else
+
+eg,
+int num = 20;
+Boolean result = (num > 100) ? true : false;
+
+'''
+To convert from int to String 
+String s = Integer.toString(num);
+
+To convert IntString to int ,
+eg .
+String numtxt = "123";
+Integer num = Integer.valueOf(numtxt); // This will convert into int.
+'''
+
+switch statement 
+
+in switch statement if the match is found in a statement if there is no break statement on it then next statements will be
+executed. It won't bother break statements in next switch statements.default will be executed if nothing matches.
+
+You can declare number as int i=2_34_2345; for readability
+
+there is wrapper class for all 8 primitive data types in java.
+Which is called boxed data type.
+
+You can generate a random numbers like Integer's min value like
+Integer var_name = Integer.MIN_VALUE;
+this will return the minimum value for int
+
+To get exact decimal addition and subtraction use 
+import java.math.BigDecimal;
+declare varialbles like ,
+BigDecimal var_name = new BigDecimal("1");
+BigDecimal var_2 = new BigDecimal("2.4");
+System.out.println(var_name.add(var_2));
+System.out.println(var_name.subtract(var_2));  this will return exact addition and subtraction
+
+when you declare a variable with keyword static its scope is entire class
+
+To get input from user you can also get by
+
+System.console().readLine()
+
+this keyword in java
+
+without this a method inside a class having variables to print will look for variables declared in class
+instead a constructor is created with values 
+so using this.var_name in constructor will make the methods being used these values.
+
+Static and Dynamic binding 
+
+at the compile time when objects are referenced and binded with the object is static binding.
+
+You can call a non-static method by a object by creating a object without really referencing a object with a identifier.
+
+eg. void callmemethod(){}
+    new classname().callmemethod();
+    will excute the method.
+
+To convert a array into List 
+import java.util.*;
+
+int[] array = {2,3,4};
+List list_name = new ArrayList(Arrays.asList(array));
+you can have contains , add like methods
+
+To find the max of  a array,
+Arrays.stream(array_name).max().getAsInt();
+
+To sort array in reverse order,
+Arrays.sort(array_name,Collections.reverseOrder())
+
+Static method can not be overriden ,
+
+Interface --
+ by default all methods in interface are abstract and public 
+ a variable declared in body of Interface cannot be changed in implemented classes ,
+ you cannot change the value as it is final, static  by default because of interface
+
+ To define a method inside body of interface ,
+ public static methname(){
+
+ }
+
+ You can access  these methods using interface name
+ eg. interfaceName.methodName()
+
+ Otherwise you can declare method as default so you can call with instances of implemented class.
+
+ you can also inherit a interface to another using extends.
+---------------------------------------------------------------------------------------------------------------
+To make string mutable use StringBuilder from java.lang package.
+ 
+To get input using Buffered reader class,
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+  create object for Bufferedreader,
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+List<> list = new ArrayList<>();
+list.add(index,element);
+list.add(1,21); will add 21 at idx 1  (This is only due to List interface)
+
+
+Database Connectivity
+
+install jdbc driver
+add to java project library
+
+import java.sql.*;
+Load driver by ,
+Class.forName("com.mysql.jdbc.Driver");
+
+when a class implementing two interfaces , if both interface can have common method at that time
+when you override methods in implemented class Its a error 
+
+you can specify like calling ,
+interfacename.super.methodname inside a overridden method
+
+eg. interface first{
+  void common(){
+    // some code
+  }
+}
+
+interface second{
+  void common(){
+    // some code
+  }
+}
+
+class User implements first, second{
+  public void common(){
+    return first.super.common();
+  }
+}
+
+while using throw keyword for throwing custom or explicit exception use new keyword
+
+eg.   class someclass{
+        psvm{
+          if(num/0){
+            throw new Exception("any message");
+          }
+        }
+}
+
+Generics means parameterised types
+An entity such as Class, methods, interface that work with specific parameterised type is what it means

@@ -1,0 +1,1 @@
+{"threads": ["service_manager", "utility", "lcd_output_reader", "input_key_handler", "diagnostics", "gui", "mobile_app_backend"], "no_of_threads": 7}

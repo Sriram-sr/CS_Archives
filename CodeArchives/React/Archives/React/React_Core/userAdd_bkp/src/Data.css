@@ -1,0 +1,19 @@
+.users {
+    background: white;
+    /* margin: 2rem auto; */
+    max-width: 40rem;
+}
+
+.users ul {
+    list-style: none;
+    padding: 1rem;
+}
+
+.users li {
+    font-weight: bold;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    /* background-color: blue; */
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+}

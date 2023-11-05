@@ -1,0 +1,27 @@
+In manage.py shell if you use auth user model you can change password with
+from django.contrib.auth.models import User
+
+user = User.objects.get(username=<username>)
+user.set_password(<new_password>)
+user.save()
+
+This will  set new password for user
+
+ In jinja tags when you get receive a key from views like
+{'text':hello world}  if you receive in template as {{text|title}} will return as 'Hello World'
+  as it just capitalises
+
+You can redirect to a link using jinja tags 
+<a href="{% url 'name_you_given' arg %}">click_to_redirect</a>
+This is like redirecting the page but you have to use the name that you specify in path('')
+
+when sending a json response you can add safe=False parameter to pass other than dictionaries
+mylist = [
+     'api/home/',
+     'api/rooms/'
+     ]
+
+eg.  return JsonResponse(mylist,safe=False)
+
+auto_now_add option will get the time when object is created
+auto_now will gets updated every time updated

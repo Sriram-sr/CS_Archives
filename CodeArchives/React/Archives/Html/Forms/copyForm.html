@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple registration form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poiret+One&family=Raleway:wght@100&display=swap');
+
+      fieldset {
+          width: 700px;
+          background-color: #FD6169;
+      }
+
+      legend {
+          font-family: fantasy;
+      }
+
+      body {
+          background-image: url("Dell.jpg");
+          background-size: cover;
+      }
+
+      a.second {
+          cursor: wait;
+      }
+
+      .gfonts {
+          font-size: x-large;
+          color: azure;
+          font-family: 'Poiret One', cursive;
+      }
+  </style>
+</head>
+
+<body>
+  <form action="#">
+      <fieldset>
+          <legend>Sample-Form</legend>
+          Name: <input style="margin-left: 10px; margin-bottom:20px;" name="name" type="text"><br>
+          Age: <input style="margin-left: 10px; margin-bottom:20px;" name="age" type="text"><br>
+          Place: <input style="margin-left: 10px; margin-bottom:20px;" name="place" type="text" required><br>
+          Gender: <input class="radio-type" id="radioOne" type="radio" name="gender" value="male" checked>
+          <label for="radioOne">Male</label>
+          <input class="radio-type" id="radioTwo" type="radio" value="female" name="gender">
+          <label for="radioTwo">Female</label><br><br>
+          Email: <input style="margin-left: 10px; margin-bottom:20px;" name="email" type="email"><br>
+          Password: <input type="password" name="password"><br><br>
+          Birthday: <input type="date" style="margin-left: 10px; margin-bottom:20px;" name="birthday"><br>
+          Interests: <br>
+          <input type="checkbox">Cricket<br>
+          <input type="checkbox">Football<br><br>
+          <label for="selectdemo">Select career: </label>
+          <select name="selectdemo" multiple>
+              <option value="IT">IT</option>
+              <option value="IT">Doctor</option>
+              <option value="IT">Farmer</option>
+          </select><br><br>
+          <input type="submit" value="Submit"><br>
+      </fieldset>
+  </form>
+  </body>
+</html>

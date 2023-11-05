@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            {% block title %}
+            base
+            {% endblock %}
+        </title>
+    </head>
+    <body>
+        <a href=""><h1>Study Bud</h1></a>
+        <form method="GET" action="{% url 'home' %}">
+            <input type="text" name="q" placeholder="Search Rooms">    
+        </form>
+        {% if request.user.is_authenticated %}
+        <h5><i>Hello {{request.user}}!!!</i></h5>
+        {% endif %}
+        <a href="{% url 'home' %}">Home</a>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'login'%}">Login</a>
+        {% endif %}
+        <hr>
+        {% block content %}
+
+        {% endblock %}
+    </body>
+</html>

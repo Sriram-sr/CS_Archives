@@ -1,0 +1,32 @@
+h1{
+    color:blue;
+    font-family: sans-serif;
+}
+
+.first{
+    color:blue;
+}
+
+h2.second{
+    color: darkorange;
+}
+
+p.second{
+    color: crimson;
+}
+
+p{
+    text-align: justify;
+}
+
+span{
+    font-family: Arial;
+}
+
+#para1{
+    color: darkcyan;
+}
+
+#para2{
+    color: chartreuse;
+}

@@ -1,0 +1,7 @@
+package sim;
+
+public class Head{
+     void funcOne(){
+		System.out.println("This is function one");
+	}	
+}

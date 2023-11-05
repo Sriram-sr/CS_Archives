@@ -1,0 +1,11 @@
+.heading{
+    background-color: red;
+}
+
+.heading{
+    background-color: green !important;
+}
+
+.heading{
+    background-color: yellow;
+}

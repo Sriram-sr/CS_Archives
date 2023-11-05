@@ -1,0 +1,125 @@
+<!--
+ ******************************************************************************
+ *
+ * File Name      : webapp_wo_fb.html
+ * Version        : 1.0
+ * Date           : June 12 2020
+ *
+ * Copyright (C) mieuPro Systems, 2020
+ *
+ ******************************************************************************
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="/static/webapp_css/webapp.css">
+
+<script src="/static/jquery-2.2.4.js"></script>
+<link rel="stylesheet" href="/static/css/all.css">
+<link rel="manifest" href="/static/manifest.json">
+
+<link rel="stylesheet" href="/static/jquery-confirm.min.css">
+<script src="/static/jquery-confirm.min.js"></script>
+
+<link rel="apple-touch-icon" sizes="128x128" href="http://{{ ip }}/img?image=appicon.jpg">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="white">
+<meta name="apple-mobile-web-app-title" content="Lavazza Caffè">
+<meta name="mobile-web-app-title" content="Lavazza Caffè">
+
+<title>Lavazza CFDS</title>
+<script>
+  var server_ip = "{{ ip }}"
+  if (detect_mobile() != true){
+    var base_url = 'http://' + server_ip + '/';
+    var redirect_page = base_url + "webapp";
+    $(location).attr('href', redirect_page);
+  }
+  
+  function detect_mobile() {
+  const toMatch = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i
+  ];
+
+  return toMatch.some((toMatchItem) => {
+      return navigator.userAgent.match(toMatchItem);
+  });
+}
+</script>
+
+</head>
+<body>
+
+
+<div class="topbar" id="stick" style="border: 1px solid black;background-color:#100A45;">
+    <div id="back" style="padding-left: 20px;">
+      <img id="info" src="http://{{ ip }}/img?image=infowhite.png" class="topbar-icons">
+    </div>
+    <div id="logo" style="width: 100%;text-align: center;margin-top: 5px;">
+        <img src="http://{{ ip }}/img?image=lavazzawhite.png" style="width:130px;height:40px;object-fit: contain;">
+    </div>
+    <div id="refresh1" style="float: left;margin-left: auto;padding-right: 20px;">
+        <img id="refresh" src="http://{{ ip }}/img?image=refreshwhite.png" class="topbar-icons">
+    </div>
+</div>
+
+<div id="parentDiv" style="margin-top: 12px;">
+  <!--Product list-->
+</div>
+
+<div id="modalBox" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="modalCloseBtn" class="modal-close"><i class="fa fa-fw fa-xs fa-times-circle"></i></span>
+    
+    <div style="margin-top: 18px;" class="imagecenter">
+      <img src="http://{{ ip }}/img?image=lavazza.png" style="width:100px;height:35px;object-fit: contain;">
+    </div>
+    
+    <p id="prodName" class="prod-text">South Indian Coffee Light</p>
+
+    <p class="prod-text" id="pairProd"><span id="and">&</span> <span id="pairProdName">Tea Milk</span></p>
+
+    <div style="margin-top: 0px;" class="imagecenter">
+      <img id="prodImg" class="prod-img" src="http://{{ ip }}/img?image=9.jpg" style="z-index: 1;">
+      <img id="pairProdImg" class="prod-img" src="http://{{ ip }}/img?image=10.jpg" style="margin-left: -30px;">
+    </div>    
+
+    <p id="orderNum" class="order-text">Order No <span id="orderNumContent">14</span></p>
+
+    <p id="status" class="status-text">Status</p>
+
+    <p id="statusContent" class="status-content-text">Order your Beverage</p>
+
+    <p id="waitTime" class="status-content-text" style="font-weight: bold;">Approx Wait Time - <span id="waitTimeContent">30</span> Sec</p>
+    
+    <div style="margin-top: 10px;" class="imagecenter">
+      <button class="modal-btn" id="modalButton1" value="order"><i class="fa fa-fw fa-check-circle"></i> Order</button>
+    </div>
+
+    <p id="timeout" class="status-content-text" style="margin-top: 10px;">Timeout : <span id="timeoutContent">30</span></p>
+
+  </div>
+
+</div>
+
+<script src="/static/webapp_js/webapp_wo_fb.js"></script>
+<script>
+    var server_ip = "{{ ip }}"
+    var wifi_mode = "{{ wifi_mode }}"
+    configure_ip(server_ip, wifi_mode);
+</script>
+</body>
+</html> 

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List</title>
+    </head>
+    <body>
+        <ul>
+          {% for x in object_list %}
+            <li> {{x.Username}} </li>
+            <li>{{x.place}}</li>
+            <li>{{x.password}}</li>
+          {% endfor %}   
+    </body>
+</html>

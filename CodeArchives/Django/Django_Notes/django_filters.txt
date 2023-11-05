@@ -1,0 +1,59 @@
+To filter data model
+import django_filters
+add it to settings.py apps
+settings = [
+    ...
+    'django_filters',
+    ...
+]
+
+create a file filters.py in apps folder
+from django_filters import FilterSet
+create a class like 
+
+class OrderFilter(FilterSet):
+    class Meta:
+        model = <model to be filtered>
+        fields = <any>
+
+import it in views 
+in your views method,
+orderSet = OrderFilter()
+pass this to render context
+in your template, {{orderSet.form}} => This will be a form with fields in your model
+It should be get method
+
+Idea is to filter objects based on fields choosen
+pass your get method data as,
+orderSet = OrderFilter(request.GET,queryset=orders)
+here orders is all orders 'orders = Order.objects.all()'
+orders = orderSet.qs
+this will give the filtered orders ..you can render out this 
+
+SampleCode-----
+
+# def customers(request,pk):
+    # customer = Customer.objects.get(id=pk)
+    # orders = customer.order_set.all()
+    # orderSet = OrderFilter(request.GET,queryset=orders)
+    # orders = orderSet.qs 
+    # orders_count = orders.count()
+    # context = {
+    #     'customer': customer,
+    #     'orders': orders,
+    #     'orders_count': orders_count,
+    #     'orderFilter': orderFilter
+    # }
+    # return render(request,"accounts/customers.html",context) 
+
+you can even filter with date and charfield provided by django_filters
+
+eg. 
+# class OrderFilter(FilterSet):
+#     start_date = DateFilter(field_name='date_created',lookup_expr='gte')
+#     end_date = DateFilter(field_name='date_created',lookup_expr='lte')
+#     note = CharFilter(field_name='note',lookup_expr='icontains')
+#     class Meta:
+#         model = Order
+#         fields = '__all__'
+#         exclude = ['customer','date_created']

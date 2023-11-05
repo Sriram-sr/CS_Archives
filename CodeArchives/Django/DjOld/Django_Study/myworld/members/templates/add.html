@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add page</title>
+        <body>
+            <h1>Add member</h1>
+            <form action="addrecord/" method="post">
+                {% csrf_token %}
+                First Name : <br>
+                <input name="first"><br><br>
+                Last Name :<br>
+                <input name="last"><br><br>
+                <input type="submit" value="Submit">
+            </form>      
+          </body>
+          <!-- This is the form when in members/ url if user clicks add members ..this page gets redirected-->
+          <!-- now add a add function in views.py to get redirected to this template -->
+    </head>
+</html>

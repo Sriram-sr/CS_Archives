@@ -1,0 +1,112 @@
+"""
+ ******************************************************************************
+ *
+ * File Name      : lavazza_cfds_common_macros.py
+ * Version        : 1.0
+ * Date           : June 12 2020
+ *
+ * Copyright (C) mieuPro Systems, 2020
+ *
+ ******************************************************************************
+ """
+
+import os,json
+from filelock import FileLock
+# Configuration file path
+current_file_path = os.path.abspath(__file__) #/home/pi/lavazza_cfds/src/source_code/commoncode/lavazza_cfds_common_macros.py
+current_file_path_as_list = current_file_path.split('/')
+del current_file_path_as_list[-4:]
+BASE_DIR = "/".join(current_file_path_as_list) + "/"
+
+#import logging
+#LOG_LEVEL = logging.DEBUG # set log_level for the entire project
+
+#BASE_DIR = "/home/pi/lavazza_cfds/"
+#BASE_DIR = os.path.abspath("../../../") +  "/"
+
+FEATURE_CONF_FILE = BASE_DIR + "src/configs/feature_configs/feature_configs.json"
+# File contains details about all the service of the application
+SERVICE_DETAILS_FILE = BASE_DIR + "src/configs/feature_configs/service_details.json"
+
+DEVICE_CONF_DIR = BASE_DIR + "src/configs/device_configs/"
+DEVICE_PROVISION_INFO_FILE = DEVICE_CONF_DIR + "device_provision_info.json"
+PRODUCT_NAME_CONFIG_FILE = DEVICE_CONF_DIR + "product_details.json"
+DEV_TYPE_CONFIG_FILE = DEVICE_CONF_DIR + "dev_type.json"
+
+TMP_DIRECTORY_PATH = BASE_DIR + "tmp/"
+INITIALIZED_SERVICES_FILE = TMP_DIRECTORY_PATH + "initialized_services.json"
+
+MB_IO_HANDLER_FILE_PATH = BASE_DIR + "src/source_code/features/MOTHERBOARD_IO_HANDLER"
+RESOURCES_FILE_PATH = BASE_DIR + "src/resources"
+
+HOTSPOT_CONF_FILE = "/etc/hostapd/hostapd.conf"
+
+# LOG FILES
+LAVAZZA_COMMON_LOG_FILE = BASE_DIR + "logs/lavazza.log"
+DETAILED_LOG = BASE_DIR + "/logs/detailed_diagnostics_log.json"
+DETAILED_LOG_BACKUP = BASE_DIR + "/logs/detailed_diagnostics_log_backup.json"
+SUMMARY_LOG = BASE_DIR + "/logs/summary_diagnostics_log.json"
+SUMMARY_LOG_BACKUP = BASE_DIR + "/logs/summary_diagnostics_log_backup.json"
+
+PROCESS_IDS_FILE = TMP_DIRECTORY_PATH + "process_ids.json"
+
+MAX_MACHINE_READY_EVENT_WAIT_TIME = 45  # secs
+MAX_ORDER_DISPENSE_WAIT_TIME = 45 #seconds
+
+SEMAPHORE_INITIAL_VALUE = MSG_QUEUE_SIZE = 1
+MSG_QUEUE_TIME_OUT = 2  # secs
+FINISHED_EVENT_TIME_OUT = 30  # secs
+LOCK_ACQUIRE_TIME_OUT = 30  # secs
+
+ENABLE = True
+DISABLE = False
+
+# Function return values
+SUCCESS = 0
+FAILURE = -1
+
+# Machine types
+PANTRY_TYPE = "Pantry-Type"
+LOUNGE_TYPE = "Lounge-Type"
+RETRO_FIT_TYPE = "Retrofit-Type"
+
+TC_TEXT_MESSAGE_TYPE_ID = 1  # tech console display
+ENABLE_POP_UP_MESSAGE_TYPE_ID = 2  # popup_msg_enable
+DISABLE_POP_UP_MESSAGE_TYPE_ID = 3  # popup_msg_enable
+SHUTDOWN_MESSAGE_TYPE_ID = 4  # device_shutdown
+APPLICATION_RESET_MESSAGE_TYPE_ID = 5  # device_reboot
+INIT_PROVISION_MESSAGE_TYPE_ID = 6  # initiate_provision
+PRODUCT_NAME_MESSAGE_TYPE_ID = 7  # save the product names
+DEVICE_INFO_MESSAGE_TYPE_ID = 8  # save ssid and passsword
+REBOOT_MESSAGE_TYPE_ID = 9  # reboot the the machine
+GUI_BACKGROUND_CHANGE_MESSAGE_TYPE_ID = 10  # change product dispense window background
+
+# CALLER_ID
+USER_CALLER_ID = 1
+ADMIN_CALLER_ID = 2
+TECHNICIAN_CALLER_ID = 3
+MOBILE_APP_ID = 4
+INPUT_KEY_HANDLER_ID = 5
+GUI_CONTROLLER_ID = 6
+
+# Machine states ID
+READY_TO_DISPENSE_STATE = 1
+DISPENSING_STATE = 2
+RINSE_STATE = 3
+ENABLE_FOAMER_ON = 4
+MILK_NOT_READY_STATE = 5
+MACHINE_NOT_READY_STATE = 6
+DISABLE_SERVICE_CARD = 7
+MACHINE_ERROR_STATE = 8
+UNKNOWN_STATE = 9
+
+MAX_PRODUCT_COUNT = 8
+
+with FileLock(FEATURE_CONF_FILE+ ".lock"):
+    with open(FEATURE_CONF_FILE) as f:
+        feature_configs =  json.load(f)
+        LOG_LEVEL = feature_configs['other_parameters']['log_level']
+        
+print("LOG_LEVEL =",LOG_LEVEL)
+
+

@@ -1,0 +1,14 @@
+To use django crispy forms
+
+pip install django-crispy-forms
+
+settings installed apps add, 
+
+crispy_forms
+
+add a line in settings.py,
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+in your form rendering template,
+{% load crispy_forms_tags %}
+{{ form|crispy }}

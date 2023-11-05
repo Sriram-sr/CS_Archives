@@ -1,0 +1,13 @@
+CSS selector is for which tag you are giving the formatting
+
+p{
+    text-align: center,
+    size: 200
+}
+
+here p is css selector
+
+Three types of styling in Css
+* Inline style(Styling inside html tags)
+* Internal style(Style defined in selector inside html head tag)
+* External style(Using external .css file)

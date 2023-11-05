@@ -1,0 +1,284 @@
+"""
+ ******************************************************************************
+ *
+ * File Name      : lavazza_cfds_common_apis.py
+ * Version        : 1.0
+ * Date           : June 12 2020
+ *
+ * Copyright (C) mieuPro Systems, 2020
+ *
+ ******************************************************************************
+ """
+
+import json
+import os
+from subprocess import Popen, PIPE
+
+from SystemEvent import SystemEvent
+import posix_ipc
+from filelock import FileLock
+
+from lavazza_cfds_common_macros import *
+import logging
+
+
+def read_from_file(data, file_to_read):
+    """ Reads data from file """
+    try:
+        with FileLock(file_to_read + ".lock"):
+            with open(file_to_read) as file:
+                data.update(json.load(file))
+        return SUCCESS
+
+    except:
+        #print("Read from file - Error : ", error)
+        logging.exception("Read from file to file: %s",file_to_read)
+        return FAILURE
+
+
+def write_to_file(data, file_to_write):
+    """ Writes data to file """
+    try:
+        with FileLock(file_to_write + ".lock"):
+            file = open(file_to_write, 'w')
+            json.dump(data, file)
+            file.close()
+        return SUCCESS
+
+    except:
+        logging.exception("Write to file: %s",file_to_write)
+        #print("Write to file - Error : ", error)
+        return FAILURE
+
+
+def update_initialized_services_file(service_name):
+    """ Add initialized thread name to the initialized_threads_file """
+    initialized_services = {}
+
+    try:
+        # INITIALIZED_THREADS_FILE + ".update_lock" is the key for the lock
+        with FileLock(INITIALIZED_SERVICES_FILE + ".update_lock"):
+            if read_from_file(initialized_services, INITIALIZED_SERVICES_FILE) == FAILURE:
+                raise Exception("File reading error in ", INITIALIZED_SERVICES_FILE)
+
+            initialized_services["services"].append(service_name)
+            initialized_services["no_of_services"] += 1
+
+            if write_to_file(initialized_services, INITIALIZED_SERVICES_FILE) == FAILURE:
+                raise Exception("write_to_file error in" + INITIALIZED_SERVICES_FILE)
+
+            return SUCCESS
+
+    except Exception as error:
+        logging.exception("{} : update_initialized_services_file : {}".format(service_name, error))
+        return FAILURE
+
+
+def get_system_resources(service_resources, own_service_resources):
+    system_resources = {}
+
+    if own_service_resources:
+        system_resources["application_start_event"] = SystemEvent("application_start_event")
+
+    for event in service_resources["events"]:
+        system_resources[event] = SystemEvent(event)
+
+    for queue in service_resources["queues"]:
+        if own_service_resources:
+            system_resources[queue] = posix_ipc.MessageQueue(name=queue, flags=posix_ipc.O_CREX,
+                                                             max_messages=MSG_QUEUE_SIZE)
+        else:
+            system_resources[queue] = posix_ipc.MessageQueue(name=queue)
+
+    for lock in service_resources["locks"]:
+        if own_service_resources:
+            system_resources[lock] = posix_ipc.Semaphore(name=lock, flags=posix_ipc.O_CREX,
+                                                         initial_value=SEMAPHORE_INITIAL_VALUE)
+        else:
+            system_resources[lock] = posix_ipc.Semaphore(name=lock)
+
+    return system_resources
+
+
+def initialize_service(service_system_resources, service_name):
+    device_provision_info = {}
+    service_details = {}
+    dependant_services = None
+
+    try:
+        # Get provision status from device config file
+        if read_from_file(device_provision_info, DEVICE_PROVISION_INFO_FILE) == FAILURE:
+            raise Exception("Error while getting device_provision_info")
+
+        if read_from_file(service_details, SERVICE_DETAILS_FILE) == FAILURE:
+            raise Exception("File reading error in ", SERVICE_DETAILS_FILE)
+
+        for service_detail in service_details["service_details"]:
+            if service_detail["service_name"] == service_name:
+                service_system_resources.update(get_system_resources(service_detail["service_resources"], True))
+                dependant_services = service_detail["dependant_services"]
+                break
+
+        # put the entry in the initialized_thread file
+        if update_initialized_services_file(service_name) == FAILURE:
+            raise Exception("Error in update_initialized_services_file function")
+        logging.info("{} : update_initialized_services_file successfully".format(service_name))
+
+        logging.info("{} : Waiting for the application start event".format(service_name))
+        service_system_resources["application_start_event"].wait()
+        logging.info("{} : Application start event triggered".format(service_name))
+
+        for service_detail in service_details["service_details"]:
+            if service_detail["service_name"] in dependant_services:
+                if device_provision_info["provision_status"] is True:
+                    if device_provision_info["device_type"] in service_detail["working_device_types"]:
+                        service_system_resources.update(get_system_resources(service_detail["service_resources"], False))
+                    else:
+                        logging.info("{} : {} is not running for this device type".format(
+                            service_name, service_detail["service_name"]))
+                else:
+                    if service_detail["pre_provision_init_required"] is True:
+                        service_system_resources.update(get_system_resources(service_detail["service_resources"], False))
+                    else:
+                        logging.info("{} : {} is not running at pre provision stage".format(
+                            service_name, service_detail["service_name"]))
+
+        return SUCCESS
+
+    except Exception as error:
+        logging.exception("{} : initialize_thread : {}".format(service_name, error))
+        return FAILURE
+      
+
+def clean_msg_queue(queue):
+    try:
+        if queue.current_messages > 0:
+            queue_data = json.loads(queue.receive(timeout=MSG_QUEUE_TIME_OUT)[0].decode())
+            logging.info("Clean_msg_queue : queue_data - {}".format(queue_data))
+
+        logging.info("Clean_msg_queue : Msg queue is perfect Queue size - {}".format(queue.current_messages))
+
+    except Exception as error:
+        logging.exception("Clean_msg_queue : {}".format(error))
+
+
+def trigger_event_handler_framework(input_data):
+    # input_data = {"thread_name": thread_name, "event": event, "queue": queue, "event_data": event_data,
+    # "finished_event": finished_event, "response_required": True or False}
+    try:
+        input_data["queue"].send(json.dumps(input_data["event_data"]).encode(), timeout=MSG_QUEUE_TIME_OUT)
+        logging.info("{} : event data send successfully".format(input_data["thread_name"]))
+        input_data["event"].set()
+        logging.info("{} : {} set successfully".format(input_data["thread_name"], input_data["event"]))
+        if input_data["finished_event"]:
+            logging.info("{} : Waiting for the {}".format(input_data["thread_name"], input_data["finished_event"]))
+            input_data["finished_event"].wait(FINISHED_EVENT_TIME_OUT)
+            logging.info("{} : {} occurred".format(input_data["thread_name"], input_data["finished_event"]))
+            input_data["finished_event"].clear()
+            logging.info("{} : {} cleared".format(input_data["thread_name"], input_data["finished_event"]))
+
+        if input_data["response_required"]:
+            status = json.loads(input_data["queue"].receive(timeout=MSG_QUEUE_TIME_OUT)[0].decode())
+            return status
+
+    except Exception as error:
+        logging.exception("{} : trigger_event : {}".format(input_data["thread_name"], error))
+
+
+def event_handler_framework(input_data):
+    # input_data = {"thread_name": thread_name, "event": event, "queue": queue,
+    # "queue_handler_function": queue_handler_function, "finished_event": finished_event}
+    response = None
+
+    try:
+        logging.info("{} : Waiting for the {}".format(input_data["thread_name"], input_data["event"]))
+        input_data["event"].wait()
+        logging.info("{} : {} occurred".format(input_data["thread_name"], input_data["event"]))
+        received_data = json.loads(input_data["queue"].receive(timeout=MSG_QUEUE_TIME_OUT)[0].decode())
+        logging.debug("{} : Msg Queue data : {}".format(input_data["thread_name"], received_data))
+        response = input_data["queue_handler_function"](received_data)
+        logging.info("{} : queue_handler_function finished".format(input_data["thread_name"]))
+
+    except Exception as error:
+        logging.exception("{} : event_handler : {}".format(input_data["thread_name"], error))
+
+    finally:
+        input_data["event"].clear()
+        logging.info("{} : {} cleared".format(input_data["thread_name"], input_data["event"]))
+
+        clean_msg_queue(input_data["queue"])
+        
+        if input_data["finished_event"]:
+            input_data["finished_event"].set()
+            logging.info("{} : {} set successfully".format(input_data["thread_name"], input_data["finished_event"]))
+        
+        if response is not None:
+            input_data["queue"].send(json.dumps(response).encode(), timeout=MSG_QUEUE_TIME_OUT)
+            logging.info("{} : response send successfully".format(input_data["thread_name"]))
+           
+
+def command_executor(output, command):
+    """ Executes the command and returns the output """
+
+    try:
+        process = Popen(command, shell=True, stdout=PIPE, stderr=PIPE)  # Execute the command
+        stdout, stderr = process.communicate()
+        if stderr:
+            output.update({"stderr": stderr})
+        if stdout:
+            output.update({"stdout": stdout})
+        return process.returncode
+
+    except:
+        #print("Command Executor - Execution failed for the command :: ", command)
+        #print("Command Executor - Error : ", Error)
+        logging.exception("Command Executor - Execution failed for the command :: %s",command)
+        return FAILURE
+    
+def update_process_id(process_name):
+    try:
+
+        process_id = os.getpid()
+        process_name_with_pid = {process_name: process_id}
+        print(process_name_with_pid)
+ 
+        if not (os.path.isfile(PROCESS_IDS_FILE)):
+            if write_to_file(process_name_with_pid, PROCESS_IDS_FILE) == FAILURE:
+                raise Exception("File write error: %s", PROCESS_IDS_FILE)
+        else:
+            data = {}
+            if read_from_file(data, PROCESS_IDS_FILE) == FAILURE:
+                raise Exception("File read error: %s", PROCESS_IDS_FILE)
+            data.update(process_name_with_pid)
+            if write_to_file(data, PROCESS_IDS_FILE) == FAILURE:
+                raise Exception("File write error: %s", PROCESS_IDS_FILE)
+            return SUCCESS
+    except:
+        logging.exception("update_process_id")
+        return FAILURE
+
+
+def get_product_details():
+
+    try:
+
+        product_details = {}
+
+        # READ DEVICE DETAILS FROM DEVICE PROVISION INFO FILE
+        if read_from_file(product_details,
+                                    DEVICE_PROVISION_INFO_FILE) == FAILURE:
+            raise Exception("File reading error in " + DEVICE_PROVISION_INFO_FILE)
+
+        products_details = product_details["provisioned_product_details"]
+
+        product_count = len(products_details)
+
+        product_names = [None]*product_count
+
+        for index in range(product_count):
+            product_names[index] = products_details[index]
+
+        return product_names, product_count
+
+    except:
+        logging.exception("get_product_count:")

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add data</title>
+    </head>
+    <body>
+        <h1>Add Your Products...</h1>
+        <br>
+        <form action="add_one/"  method="post" >
+        Name : <input type="text" name="name">
+        <br><br>
+        Net : <input type="text" name="net">
+        <br><br>
+        Price : <input type="text" name="price">
+        <br><br>
+        {% csrf_token %}
+        <input type="submit" name="Submit">
+    </body>
+</html>

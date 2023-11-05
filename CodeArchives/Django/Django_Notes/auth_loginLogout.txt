@@ -1,0 +1,14 @@
+To use login and logout from auth models 
+
+from django.cpntrib.auth import views as <any_name>
+for this example auth_views
+
+in your urlpatters, 
+path('login/', auth_views.LoginView.as_view(template_name=<your templatename>, name='')),
+path('logout/', auth_views.LogOutView.as_view(template_name=<your templatename>, name='')),
+
+after adding this login will function , you have to specify redirect page after login sucess
+
+for that in settings file add,
+
+LOGIN_REDIRECT_URL = <your login url name>

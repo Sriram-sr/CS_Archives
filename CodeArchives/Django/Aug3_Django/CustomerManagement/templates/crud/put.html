@@ -1,0 +1,32 @@
+{% extends "crud/base.html" %}
+
+{% block content %}
+
+<h3 style="color:darkslategrey ;">Put Output....</h3><br>
+
+<form action="{% url 'put' employee.id %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group row">
+      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
+      <div class="col-sm-10">
+        <input class="form-control form-control-sm" autocomplete="off" name="name" id="colFormLabelSm" value="{{employee.name}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabel" class="col-sm-2 col-form-label">Age</label>
+      <div class="col-sm-10">
+        <input class="form-control" autocomplete="off" name="age" id="colFormLabel" value="{{employee.age}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Salary</label>
+      <div class="col-sm-10">
+        <input class="form-control form-control-lg" autocomplete="off" name="salary" id="colFormLabelLg" value="{{employee.salary}}">
+      </div>
+    </div>
+    <input class="btn btn-dark" type="submit" value="Submit"><br><br>
+  </form>
+
+<a href="{% url 'crud' %}"><button type="button" class="btn btn-dark">HOME</button></a>
+
+{% endblock %}

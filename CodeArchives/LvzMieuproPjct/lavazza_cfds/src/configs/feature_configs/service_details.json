@@ -1,0 +1,77 @@
+{"service_details": [{"service_name": "lavazza_cfds_service_management.service",
+                      "service_resources": {"events": ["shutdown_or_reboot_event"],
+                                            "queues": ["/shutdown_or_reboot_event_queue"],
+                                            "locks": ["/shutdown_or_reboot_event_lock"]
+                                           },
+                      "dependant_services": [],
+                      "pre_provision_init_required": true,
+                      "working_device_types": ["Pantry-Type", "Retrofit-Type"],
+                      "working_wi-fi_modes": ["Corp_Wi-Fi", "Device_Wi-Fi", "Gsm"]
+                     },
+
+                     {"service_name": "lavazza_cfds_motherboard_io_handler.service",
+                      "service_resources": {"events": ["mb_io_event", "mb_io_finished_event", "machine_ready_event","lcd_display_event"],
+                                            "queues": ["/mb_io_queue"],
+                                            "locks": ["/mb_io_event_lock","/iot_board_handler_lock","/uart_read_lock","/uart_access_lock"]
+                                           },
+                      "dependant_services": ["lavazza_cfds_mobile_app_backend.service", "lavazza_cfds_server_communication.service"],
+                      "pre_provision_init_required": false,
+                      "working_device_types": ["Pantry-Type", "Retrofit-Type"],
+                      "working_wi-fi_modes": ["Corp_Wi-Fi", "Device_Wi-Fi", "Gsm"]
+                     },
+
+                     {"service_name": "lavazza_cfds_utility.service",
+                      "service_resources": {"events": ["utility_event", "utility_finished_event"],
+                                            "queues": ["/utility_queue"],
+                                            "locks": ["/utility_event_lock"]
+                                           },
+                      "dependant_services": ["lavazza_cfds_service_management.service","lavazza_cfds_server_communication.service","lavazza_cfds_mobile_app_backend.service"],
+                      "pre_provision_init_required": true,
+                      "working_device_types": ["Pantry-Type", "Retrofit-Type"],
+                      "working_wi-fi_modes": ["Corp_Wi-Fi", "Device_Wi-Fi", "Gsm"]
+                     },
+
+                     {"service_name": "lavazza_cfds_server_communication.service",
+                      "service_resources": {"events": ["server_communication_event", "server_communication_finished_event","server_upload_event", "wifi_connection_status_event"],
+                                            "queues": ["/server_communication_queue"],
+                                            "locks": ["/server_communication_event_lock"]
+                                           },
+                      "dependant_services": ["lavazza_cfds_utility.service"],
+                      "pre_provision_init_required": true,
+                      "working_device_types": ["Pantry-Type", "Retrofit-Type"],
+                      "working_wi-fi_modes": ["Corp_Wi-Fi", "Device_Wi-Fi", "Gsm"]
+                     },
+
+                     {"service_name": "lavazza_cfds_mobile_app_backend.service",
+                      "service_resources": {"events": ["dispense_permission_event", "dispense_queue_handler_event", "dispense_completion_event","mobile_app_order_event","pubsub_dispense_permission_event", "pubsub_dispense_queue_handler_event"],
+                                            "queues": ["/mobile_app_queue","/mobile_app_order_queue"],
+                                            "locks": ["/mobile_app_order_event_lock"]
+                                           },
+                      "dependant_services": ["lavazza_cfds_utility.service", "lavazza_cfds_motherboard_io_handler.service"],
+                      "pre_provision_init_required": true,
+                      "working_device_types": ["Pantry-Type", "Retrofit-Type"],
+                      "working_wi-fi_modes": ["Corp_Wi-Fi", "Device_Wi-Fi", "Gsm"]
+                     },
+
+                     {"service_name": "lavazza_cfds_pubsub_client.service",
+                      "service_resources": {"events": [],
+                                            "queues": [],
+                                            "locks": []
+                                           },
+                      "dependant_services": ["lavazza_cfds_utility.service"],
+                      "pre_provision_init_required": false,
+                      "working_device_types": ["Pantry-Type", "Retrofit-Type"],
+                      "working_wi-fi_modes": ["Corp_Wi-Fi", "Gsm"]
+                     },
+
+                     {"service_name": "lavazza_cfds_diagnostics.service",
+                      "service_resources": {"events": [],
+                                            "queues": [],
+                                            "locks": []
+                                           },
+                      "dependant_services": [],
+                     "pre_provision_init_required": true,
+                     "working_device_types": ["Pantry-Type", "Retrofit-Type"],
+                     "working_wi-fi_modes": ["Corp_Wi-Fi", "Device_Wi-Fi", "Gsm"]
+                     }
+                    ]}

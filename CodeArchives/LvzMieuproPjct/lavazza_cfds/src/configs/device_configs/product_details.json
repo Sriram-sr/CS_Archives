@@ -1,0 +1,236 @@
+{
+  "product_details": [
+    {
+      "product_name": "Ristretto",
+      "product_id": 1,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"BLACK_COFFEE", "approx_dispense_time": 25}
+    },
+    {
+      "product_name": "Espresso",
+      "product_id": 2,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"BLACK_COFFEE", "approx_dispense_time": 25}
+    },
+    {
+      "product_name": "Black Coffee",
+      "product_id": 3,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"BLACK_COFFEE", "approx_dispense_time": 25}
+    },
+    {
+      "product_name": "South Indian Coffee Light",
+      "product_id": 4,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": true,
+      "other_params": {"product_type":"COFFEE", "approx_dispense_time": 25}
+    },
+    {
+      "product_name": "South Indian Coffee Strong",
+      "product_id": 5,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": true,
+      "other_params": {"product_type":"COFFEE", "approx_dispense_time": 25}
+    },
+    {
+      "product_name": "Caffe Latte",
+      "product_id": 6,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": true,
+      "other_params": {"product_type":"COFFEE", "approx_dispense_time": 25}
+    },
+    {
+      "product_name": "Cappuccino",
+      "product_id": 7,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": true,
+      "other_params": {"product_type":"COFFEE", "approx_dispense_time": 25}
+    },
+    {
+      "product_name": "Macchiato",
+      "product_id": 8,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": true,
+      "other_params": {"product_type":"COFFEE", "approx_dispense_time": 25}
+    },
+    {
+      "product_name": "Tea Water",
+      "product_id": 9,
+      "pair_order_flag": true,
+      "pair_product_id": 10,
+      "milk_based_product": false,
+      "other_params": {"product_type":"WATER", "approx_dispense_time": 5}
+    },
+    {
+      "product_name": "Tea Milk",
+      "product_id": 10,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": true,
+      "other_params": {"product_type":"MILK", "approx_dispense_time": 10}
+    },
+    {
+      "product_name": "Green Tea",
+      "product_id": 11,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"WATER", "approx_dispense_time": 10}
+    },
+    {
+      "product_name": "Lemon Tea",
+      "product_id": 12,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"WATER", "approx_dispense_time": 10}
+    },
+    {
+      "product_name": "Hot Milk",
+      "product_id": 13,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": true,
+      "other_params": {"product_type":"MILK", "approx_dispense_time": 10}
+    },
+    {
+      "product_name": "Hot Water",
+      "product_id": 14,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"WATER", "approx_dispense_time": 10}
+    },
+    {
+      "product_name": "Black Tea",
+      "product_id": 15,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"WATER", "approx_dispense_time": 10}
+    },
+    {
+      "product_name": "Horlicks",
+      "product_id": 16,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": true,
+      "other_params": {"product_type":"MILK", "approx_dispense_time": 10}
+    },
+    {
+      "product_name": "Hot Chocolate",
+      "product_id": 17,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": true,
+      "other_params": {"product_type":"MILK", "approx_dispense_time": 10}
+    },
+    {
+      "product_name": "Badam Milk",
+      "product_id": 18,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": true,
+      "other_params": {"product_type":"MILK", "approx_dispense_time": 10}
+    },
+    {
+      "product_name": "Filter Coffee",
+      "product_id": 19,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": true,
+      "other_params": {"product_type":"COFFEE", "approx_dispense_time": 25}
+    },
+    {
+      "product_name": "Boiled Tea",
+      "product_id": 20,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"WATER", "approx_dispense_time": 10}
+    },
+    {
+      "product_name": "Soup",
+      "product_id": 21,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"WATER", "approx_dispense_time": 15}
+    },
+    {
+      "product_name": "Tomato Soup",
+      "product_id": 22,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"WATER", "approx_dispense_time": 15}
+    },
+    {
+      "product_name": "Vegetable Soup",
+      "product_id": 23,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"WATER", "approx_dispense_time": 15}
+    },
+    {
+      "product_name": "Mug Smoodle",
+      "product_id": 24,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"WATER", "approx_dispense_time": 15}
+    },
+    {
+      "product_name": "Cup Noodles",
+      "product_id": 25,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"WATER", "approx_dispense_time": 15}
+    },
+    {
+      "product_name": "Corn Flakes",
+      "product_id": 26,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": true,
+      "other_params": {"product_type":"MILK", "approx_dispense_time": 15}
+    },
+    {
+      "product_name": "Sugarless Cereals",
+      "product_id": 27,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": true,
+      "other_params": {"product_type":"MILK", "approx_dispense_time": 15}
+    },
+    {
+      "product_name": "Steam",
+      "product_id": 28,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":"WATER", "approx_dispense_time": 15}
+    },
+    {
+      "product_name": "NONE",
+      "product_id": 29,
+      "pair_order_flag": false,
+      "pair_product_id": null,
+      "milk_based_product": false,
+      "other_params": {"product_type":null, "approx_dispense_time": 0}
+    }
+  ]
+}

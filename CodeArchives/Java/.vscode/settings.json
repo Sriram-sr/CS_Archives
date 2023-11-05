@@ -1,0 +1,10 @@
+{
+    "java.project.sourcePaths": [
+        "Practice",
+        "Learning",
+        "Inheritance",
+        "Access",
+        "Programs"
+    ],
+    "python.formatting.provider": "black"
+}

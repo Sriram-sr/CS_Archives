@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js code</title>
+</head>
+
+<body>
+    <div>
+        <p id="change">This text is to be changed</p>
+        <script src="index.js"></script>
+        <button onclick="changeText()">Click</button>
+        <script>
+            function changeText() {
+                let text = document.getElementById('change').innerHTML;
+
+                document.getElementById('change').innerHTML = text.replace('to be', '');
+            }
+        </script>
+        <p id="print"></p>
+        <script>
+            let str = 'string';
+            console.log(str.slice(-3, -1));
+        </script>
+
+        <script>
+            const points = [40, 100, 1, 5, 25, 10];
+            points.sort(function (a, b) { return a - b });
+            console.log(points);
+        </script>
+    </div>
+    <script src="dynamic.js"></script>
+    <p id="numbers"></p>
+    <script>
+        const numbers = [13,2,5,7,8,9];
+        numbers.forEach(foreach);
+
+        const mapped = numbers.map(mapEachValues);
+        console.log(mapped);
+
+        const filtered = mapped.filter(filtervalues);
+        console.log(filtered);
+
+        const reduced = numbers.reduce(reduceFun);
+        console.log(reduced);
+
+        const allValuesChecker = numbers.every(everyTrueCheck);
+        console.log(allValuesChecker);
+
+        const someValueChecker = numbers.some(someCheck);
+        console.log(someValueChecker);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+This is a file to explore the file reading of javascript.

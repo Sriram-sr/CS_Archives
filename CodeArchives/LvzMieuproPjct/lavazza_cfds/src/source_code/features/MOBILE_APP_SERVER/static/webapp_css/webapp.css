@@ -1,0 +1,244 @@
+body {
+    font-family: "Lato", sans-serif;
+  }
+  
+  /* ---------------------- TopBar -----------------------*/
+  .topbar{
+      display: flex;
+      flex-direction:row;
+      /*border: 1px solid black;*/
+  }
+  
+  .topbar-icons{
+    width:25px;
+    height:25px;
+    object-fit: contain;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+  /* ---------------------- TopBar -----------------------*/
+  
+  /* ---------------------- Login -----------------------*/
+  
+  @media only screen and (max-width: 500px) {
+    #pass {
+      width: 90%;
+    }
+  }
+  
+  .dev-row{
+      display: flex;
+      flex-direction:row;
+      /*border: 1px solid black;*/
+      margin: 10px auto;
+      min-width : 250px;
+      width: 95%;
+  }
+  
+  .dev-col-30 {
+      float: left;
+      width: 20%;
+      }
+  
+  .dev-col-60 {
+      float: left;
+      width: 67%;
+  }
+  
+  .dev-col-10 {
+      float: left;
+      width: 12%;
+  }
+  
+  input {
+    padding: 10px;
+    width: 55%;
+    font-size: 17px;
+    border: 1px solid #aaaaaa;
+    border-radius:5px;
+  }
+  
+  label{
+      padding: 12px 12px 12px 0px;
+      float: right;
+  }
+  
+  /*button {
+    background-color: #100A45;
+    color: white;
+    width: 115px;
+    height: 40px;
+    font-size: 16px;
+    padding: 12px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }*/
+
+  .button-cls {
+  background-color: #100A45;
+  color: white;
+  width: 115px;
+  height: 40px;
+  font-size: 16px;
+  padding: 12px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  }
+  
+  .menutext{
+    font-size: 18px;
+    padding-left: 10px;
+    padding-top: 3px;
+  }
+  
+  .imagecenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .beverage-icon{
+    width:100%;
+    height:70px;
+    border-radius: 10px;
+    object-fit: contain;
+  }
+  
+  .add-icon{
+    width:25px;
+    height:25px;
+    object-fit: contain;
+  }
+  
+  /* ---------------------- Login -----------------------*/
+  
+  /* ---------------------- Modal -----------------------*/
+  
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 160px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    border-radius: 10px;
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .modal-content { width: 70%;}
+    #modalButton1 { width: 45%;}
+    #modalButton2 { width: 80%;}
+  }
+  
+  /* The Close Button */
+  .modal-close {
+    color: #000;
+    float: right;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: -10px;
+  }
+  
+  .modal-row{
+      display: flex;
+      flex-direction:row;
+      margin: 10px auto;
+      width: 100%;
+  }
+  
+  .modal-col-50 {
+      width: 50%;
+      text-align: center;
+  }
+  
+  .modal-btn {
+      background-color: #100A45;
+      color: white;
+      border-radius: 8px;
+      font-size: 15px;
+      border: none;
+      width: 60%;
+      height: 35px;
+      cursor: pointer;
+  }
+  
+  .prod-text{
+      text-align: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      /*border: 1px solid black;*/
+  }
+  
+  .order-text{
+      text-align: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      font-size: 15px;
+      font-weight: bold;
+      /*border: 1px solid black;*/
+  }
+  
+  .status-text{
+      text-align: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      font-size: 12px;
+      /*border: 1px solid black;*/
+  }
+  
+  .status-content-text{
+      text-align: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      font-size: 15px;
+      /*border: 1px solid black;*/
+  }
+  
+  #stick {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0px;
+  }
+
+  .prod-img{
+    width:80px;
+    height:80px;
+    object-fit: fill;
+    border-radius: 50%;
+  }
+
+  .update-text{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    /*border: 1px solid black;*/
+  }
+
+  .update-status-text{
+    margin-bottom: 5px;
+    margin-left: 5px;
+    font-size: 14px;
+    /*border: 1px solid black;*/
+  }
+  /* ---------------------- Modal -----------------------*/

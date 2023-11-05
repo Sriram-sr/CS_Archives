@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>check</title>
+    </head>
+    <body>
+        <form action="/" method="post">
+            {% csrf_token %}
+            {{form.Username.label_tag}}
+            {{form.as_p}}
+            {{ form.errors }}
+            <!-- <label for="username">Your Name</label> -->
+            <!-- <input id="username" name="username" type="text"> -->
+            <button type="submit">Send</button>
+        </form>
+    </body>
+</html>

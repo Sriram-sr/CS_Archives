@@ -1,0 +1,11 @@
+.btn .btn-primary{
+    background-color: orangered;
+}
+
+.btn .btn-primary:hover{
+    background-color: orangered;
+}
+
+.col{
+    background-color: grey;
+}

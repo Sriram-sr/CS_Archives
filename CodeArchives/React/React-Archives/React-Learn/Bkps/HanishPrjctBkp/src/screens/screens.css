@@ -1,0 +1,19 @@
+/* login screen */
+
+/* register screen */
+.cardbg {
+  max-width: 80%;
+  height: 750px;
+  background-color: white;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+}
+
+.form {
+  width: 80%;
+}

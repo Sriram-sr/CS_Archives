@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="/static/webapp_css/webapp.css">
+
+    <script src="/static/jquery-2.2.4.js"></script>
+    <link rel="stylesheet" href="/static/css/all.css">
+
+    <!--jquery-confirm UI-->
+    <link rel="stylesheet" href="/static/jquery-confirm.min.css">
+    <script src="/static/jquery-confirm.min.js"></script>
+
+    <link rel="stylesheet" href="/static/dropzone.min.css"/>
+    <link rel="stylesheet" href="/static/basic.min.css"/>
+    <script type="application/javascript" src="/static/dropzone.min.js"></script>
+
+    <title>Lavazza CFDS File Update</title>
+</head>
+<body>
+
+<div class="topbar" id="stick" style="border: 1px solid black;background-color:#100A45;">
+    <div style="padding-left: 20px;">
+        <img id="info" src="http://{{ ip }}/img?image=infowhite.png" class="topbar-icons">
+    </div>
+    <div style="width: 100%;text-align: center;margin-top: 5px;">
+        <img id="logo" src="http://{{ ip }}/img?image=lavazzawhite.png" style="width:130px;height:40px;object-fit: contain;">
+    </div>
+    <div style="float: left;margin-left: auto;padding-right: 20px;">
+        <!--<div class="topbar-icons"></div>-->
+        <img id="settings" src="http://{{ ip }}/img?image=settings.png" class="topbar-icons">
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.write('<scr'+'ipt src="/static/webapp_js/src_update.js?'+Math.random()+'" type="text/javascript"></scr'+'ipt>');
+</script>
+<script>
+    var server_ip = "{{ ip }}"
+    configure_ip(server_ip);
+</script>
+
+<div id="warning" style="width: 100%;text-align: center;margin-top: 35px;">
+    <img src="http://{{ ip }}/img?image=warning.png" style="width:100px;height:100px;object-fit: contain;">
+    <h4>Something went wrong !!</h4>
+</div>
+
+<div id="device_reboot" style="width: 100%;text-align: center;margin-top: 35px;">
+    <img src="http://{{ ip }}/img?image=device_reboot.png" style="width:100px;height:100px;object-fit: contain;">
+    <h4>Device is Rebooting !!</h4>
+</div>
+
+<!--<script src="/static/webapp_js/src_update.js"></script>-->
+
+<div id="content" style="margin-top: 10px;">
+    <form method="POST" action='/upload' class="dropzone dz-clickable"
+          id="dropper" enctype="multipart/form-data">
+    </form>
+
+    <script type="application/javascript">
+        Dropzone.options.dropper = {
+            paramName: 'file',
+            chunking: true,
+            forceChunking: true,
+            url: '/upload',
+            maxFilesize: 50, // megabytes
+            chunkSize: 1000000 // bytes
+        }
+    </script>
+</div>
+
+<div id="updateContent">
+    <div style="margin-top: 15px;">
+        <p class="update-text"><i class="fa fa-fw fa-info-circle"></i>Update Status</p>
+        <p id="status" class="update-status-text">No Status</p>
+    </div>
+
+    <div id="updateBtn" style="text-align:center;margin:0px auto;padding-top: 15px;">
+        <button class="button-cls" id="update"><i class="fa fa-fw fa-file-import"></i> Update</button>
+    </div>
+
+    <div style="margin-top: 25px;" id="addnsettings">
+        <p class="update-text"><i class="fa fa-fw fa-plus"></i>Additional Settings</p>
+        
+        <div id="rebootContent">
+        <p class="update-status-text" style="text-align: center;">Press the below button to reboot the device</p>
+        <div style="text-align:center;margin:0px auto;">
+            <button class="button-cls" id="reboot"><i class="fa fa-fw fa-sync-alt"></i> Reboot</button>
+        </div>
+        </div>
+        
+        <div id="revertContent">
+        <p class="update-status-text" style="text-align: center;">Press the below button to revert to previous version</p>
+        <div style="text-align:center;margin:0px auto;">
+            <button class="button-cls" id="revert"><i class="fa fa-fw fa-backward"></i> Revert</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

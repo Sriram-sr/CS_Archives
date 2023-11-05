@@ -1,0 +1,64 @@
+Java basics:
+
+Oops concepts:
+
+*encapsulation
+*garbage collection
+*jvm vs jre
+*loops
+*conditional statements
+*operaters
+*precedence
+wrapper classes (boxing unbox)
+this,super,final,finaly finalize
+constructor type
+inheritence why mulitple in
+interface - normal functional
+abstract
+access specfiers
+pakages
+why public static void main
+why same class name as file 
+jvm architecture -class loading
+byte code 
+
+Advanced:
+
+string class
+type conversion
+stream classes
+file handling
+collections(map hash, map, vector, array list)
+lambda function
+java 8 features
+map reduce 
+
+
+
+api development
+
+rest concepts
+http code -types get post put
+
+spring concepts
+
+spring boot
+maven pakage,repository
+pom.xml
+spring security
+inversion of control
+anotations
+dependency injection
+what is spring bean
+bean container
+object relation map(orm)
+hybernate
+dao ddo 
+entity manager
+session management
+ war
+how to deploy war ,jar  on tomcat -- how https
+load balancer using nginx reverse proxy using nginx
+
+
+

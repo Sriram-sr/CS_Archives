@@ -1,0 +1,13 @@
+* To create custom user model,
+      from django.contrib.auth.models import AbstractUser
+   add a model def User(AbstractUser):
+                   pass
+add in settings,
+AUTH_USER_MODEL = 'appname.User'
+
+when creating a custom user class you inherit AbstractUser class will be having a field required fields which is used for 
+when creating a super user .['email','username','password']
+
+refer to E:Django/Django_rest/todolistApi/Authentication
+
+this has implementation of custom user model

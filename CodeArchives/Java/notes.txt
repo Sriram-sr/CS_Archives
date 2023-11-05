@@ -1,0 +1,8 @@
+. Bytecode is a highly optimized set of instructions designed to be executed by
+what is called the Java Virtual Machine (JVM), which is part of the Java Runtime
+Environment (JRE)
+
+it is the magic of Bytecode that makes it platform independent.
+
+An important point to be noted is that while JAVA is platform-independent language, the JVM is\
+ platform-dependent. Different JVM is designed for different OS and byte code is able to run on different OS.

@@ -1,0 +1,18 @@
+from django.forms import inlineformset_factory
+
+this is used to create inlne form set (multiple sets of forms)
+suppose there is customer model
+there is Order model which has a field 'customer' which foreignkey(1toM) relationship to customer model
+(Many customers can place a order)
+
+from models import Customer,Order
+OrderFormSet = inlineformset_factory(Customer,Order,fields=('product','status'),extra=10) # the fields are from order table
+# extra=10 10 formsets will be displayed 
+# anyVarname = inlineformset_factory(Parentmodel,Child,fields) 
+customer = Customer.objects.get(id=3)
+orderform = OrderFormSet(instance=customer)
+this will grab Order objects made with current customer and displays in html when you render
+fields you mentiomed will be displayed for each customer's object and extra three forms will be displayed(That is the advantage
+of inline formset)
+
+

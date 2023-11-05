@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Homepage</title>
+        <body>
+            {% block content %}
+            <h1>This is homepage</h1>
+            <br><br>
+            <p>This is the paragraph that is going to be shown for you when you start the django server
+                and you interact with the homepage
+            </p>
+            <br><br>
+            <table>
+                <tr>
+                    <th>S.no</th>
+                    <th>Name</th>
+                    <th>Roll_No</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Sriram</td>
+                    <td>2017</td>
+                </tr>
+            </table>
+            <p> The dynamic content displayed is {{name}}</p>
+            {% endblock %}
+        </body>
+    </head>
+</html>

@@ -1,0 +1,1 @@
+{"services": ["lavazza_cfds_service_management.service", "lavazza_cfds_utility.service", "lavazza_cfds_diagnostics.service", "lavazza_cfds_server_communication.service", "lavazza_cfds_mobile_app_backend.service"], "no_of_services": 5}

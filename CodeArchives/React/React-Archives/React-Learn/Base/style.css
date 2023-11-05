@@ -1,0 +1,14 @@
+html { 
+    background: url("dev.jpg") no-repeat center center fixed; 
+    opacity: 0.8;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0;
+	padding: 0;
+  }
+
+.navbar  {
+    opacity: 0.9;
+}

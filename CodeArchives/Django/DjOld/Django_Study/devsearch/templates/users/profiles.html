@@ -1,0 +1,14 @@
+{% extends "projects/base.html" %}
+
+{% block content %}
+<h2>Hello User</h2>
+
+{% if request.user.is_authenticated %}
+<form action="{% url 'logout' %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Logout">
+</form>
+{% else%}
+<h2>Not authenticated</h2>
+{% endif %}
+{% endblock %}

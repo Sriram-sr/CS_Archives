@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Db data
+        </title>
+        <body>
+            <h1>Members</h1>
+            <table border="1">
+            {% for x in mymembers %}
+            <tr>
+                <td><a href="update/{{ x.id }}">Update_{{x.id}}</a></td>
+                <td>{{ x.id }}</td>
+                <td>{{ x.firstname }}</td>
+                <td>{{ x.lastname }}</td>
+                <td><a href="delete/{{ x.id }}">delete</a></td>  <!-- the string you give will be added to the current -->
+                                                     <!--uri of page -->
+            </tr>
+            {% endfor %}
+            </table>
+            <br>
+            <p>
+                <a href="add/">Add member</a>
+            </p>
+        </body>
+    </head>
+</html>

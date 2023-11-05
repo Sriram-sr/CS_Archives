@@ -1,0 +1,8 @@
+Model: It acts as an interface for maintaining data. This is a logical data structure behind the entire application 
+and helps to handle the database.
+
+View: This layer encapsulates the logic responsible for processing a user’s request and returns a response. It is a user interface to execute the logic
+ and interact with the models.
+
+Template: The template layer provides a designer-friendly syntax for rendering the information to be presented to the user. It contains the static parts of the desired HTML output along with some
+ special syntax, also known as Django Template Language (DTL)

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>This is normal header tag</h1>
+    <script src="index.js"></script>
+    <p id="check">Text is colored</p>
+    <button type="button" onclick="myfunc()">Press</button>
+    <button onclick="document.write(5+10)">Try</button><hr>
+    <!-- <script>document.write(99-89)</script> -->
+    <button onclick="alertIt()">alert</button>
+    <script>console.log('hello Javascript')</script>
+    <p id="print"></p>
+    <script>
+        let var1, var2, var3;
+        var1 = 23;
+        var2 = 20;
+        // comment
+        var3 = var1+var2;
+        document.getElementById('print').innerHTML = "The value of variable 2 is " + var3;
+    </script>
+</body>
+
+</html>

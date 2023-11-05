@@ -1,0 +1,69 @@
+.container{
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-gap: 20px;
+}
+
+.zone{
+    border: 2px solid rgb(99, 72, 72);
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.blue{
+    background-color: blue;
+    padding: 20px;
+    max-width: 300px;
+    height: 150px;
+    text-align: center;
+}
+
+.red{
+    background-color: red;
+    padding: 20px;
+    max-width: 300px;
+    height: 150px;
+    text-align: center;
+}
+
+.yellow{
+    background-color: yellow;
+    padding: 20px;
+    max-width: 300px;
+    height: 150px;
+    text-align: center;
+}
+
+.orange{
+    background-color: orange;
+    padding: 20px;
+    max-width: 300px;
+    height: 150px;
+    text-align: center;
+}
+
+.purple{
+    background-color: purple;
+    padding: 20px;
+    max-width: 300px;
+    height: 150px;
+    text-align: center;
+}
+
+.sandle{
+    background-color: coral;
+    padding: 20px;
+    max-width: 300px;
+    height: 150px;
+    text-align: center;
+}
+
+.green{
+    background-color: green;
+    padding: 20px;
+    max-width: 300px;
+    height: 150px;
+    text-align: center;
+}
+

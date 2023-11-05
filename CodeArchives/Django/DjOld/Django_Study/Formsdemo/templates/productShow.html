@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Products</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>NET</th>
+                <th>PRICE</th>
+            </tr>
+            {% for x in products %}
+            <tr>
+                <td>{{ x.id }}</td>
+                <td>{{ x.pname }}</td>
+                <td>{{ x.pnet }}</td>
+                <td>{{ x.pprice }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br><br>
+        <a href="/add" >Add Products</a>
+    </body>
+</html>

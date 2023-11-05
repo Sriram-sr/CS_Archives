@@ -1,0 +1,10 @@
+
+Java wold
+ appended
+ appended
+ appended
+declaration array list,
+import java.util.ArrayList;
+ArrayList array = new ArrayList();
+array.add(2); will add 2 to list
+array.indexOf(2); will return indexOf

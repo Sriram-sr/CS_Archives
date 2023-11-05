@@ -1,0 +1,49 @@
+To use the django auth user models
+
+from django.contrib.auth.models import User 
+from django.contrib.auth.forms import UserCreationForm
+
+use this form as a model form
+in a forms.py file create a class
+
+class UserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')
+        # choose whatever fields 
+
+In your views.py
+
+in a register method for registering user with auth user fields and creating a user object in that
+form = UserForm()
+render it to template register.html
+
+In register.html
+access labels like username,paswords like {{form.username.label}}
+access form input fields like {{form.username}}
+
+save the user object like 
+form = UserForm(request.POST)
+if form valid save
+----------------------------------------------------------------------------------
+
+For Log in
+
+from django.contrib.auth import authenticate, login, logout
+
+after receiving username,pasword from login form html
+user = authenticate(request, username=<username>, password=<password>) this will return user objects if exists else None
+if exists use login(request,user)
+
+for logout simply logout(request)
+
+To make page only visible use decorators login_required
+
+from django.contrib.auth.decorators import login_required
+
+In your methods use 
+@login_required(login_url='<urlname>')
+
+To check if user is authenticated
+request.user.is_authenticated 
+

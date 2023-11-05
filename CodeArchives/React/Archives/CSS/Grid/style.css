@@ -1,0 +1,39 @@
+.container {
+    /* margin: 20px; */
+    display: grid;
+    justify-content: center;
+    /* grid-template-columns: 200px 150px 20%; */
+    /* grid-template-rows: 5rem 2.5rem; */
+}
+
+.quote {
+    background: rgba(235, 4, 111, 0.5);
+}
+
+.quote1 {
+    background: rgba(255, 154, 72, 0.5);
+}
+
+.quote2 {
+    background: rgba(255, 0, 0, 0.5);
+}
+
+.quote3 {
+    background: rgba(0, 128, 0, 0.5);
+}
+
+.quote4 {
+    background: rgba(0, 4, 255, 0.5);
+}
+
+.quote4 {
+    background: rgba(24, 24, 39, 0.5);
+}
+
+.quote5 {
+    background: rgba(236, 236, 255, 0.5);
+}
+
+.quote5 {
+    background: rgba(5, 155, 160, 0.5);
+}

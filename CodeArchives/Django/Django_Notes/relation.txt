@@ -1,0 +1,24 @@
+Django relationships 
+
+models.ForeignKey("anyModel")
+  that any model is a parent table and field having this is a child model
+
+eg. class User:
+        username = charfield
+        
+    class Room:
+        host = models.Foreignkey(User,on_delete..)
+
+Room's host may be any of the User
+A user can have many rooms (So one to many)
+
+Many To Many:
+
+class Course:
+    name = models.charfield()
+
+class Student:
+    course = models.ManytoManyField() 
+
+This shows that any course can be enrolled by any student
+a course can have any student 

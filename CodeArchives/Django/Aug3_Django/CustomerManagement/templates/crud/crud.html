@@ -1,0 +1,9 @@
+{% extends "crud/base.html" %}
+
+{% block content %}
+
+<h3>Select the crud you choose...</h3><br>
+<a href="{% url 'get' %}"><button type="button" class="btn btn-primary">GET</button></a>
+<a href="{% url 'post' %}"><button type="button" class="btn btn-secondary">POST</button></a>
+
+{% endblock %}
